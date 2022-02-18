@@ -1,5 +1,9 @@
 package com.zym.newleetcode.数组;
 
+/**
+ * 双指针(快慢指针) 数组
+ * 慢指针实际是用来标记元素 快指针实际上是用来探路查询的作用
+ */
 public class leecode27 {
     /**给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
 
