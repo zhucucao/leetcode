@@ -40,23 +40,4 @@ public class leecode27 {
         }
         return slow;
     }
-//    public static  int removeElement(int[] nums, int val) {
-//        int sameValElementCount = 0;
-//        for(int i = 0 ; i < nums.length ; i++) {
-//            if(nums[i] == val) {
-//                sameValElementCount++;
-//                for(int j = i ; j < nums.length -1 ; j++) {
-//                    int record = nums[j+1];
-//                    if(record == val) {
-//                        nums[j+1] = -1;
-//                    }
-//                    nums[j] = record;
-//                }
-//            }
-//        }
-//        for (int num : nums) {
-//            System.out.println(num);
-//        }
-//        return nums.length - sameValElementCount;
-//    }
 }
