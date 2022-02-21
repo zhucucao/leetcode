@@ -28,20 +28,13 @@ package com.zym.newleetcode.数组.滑动窗口;
  */
 public class leetcode209 {
     public static void main(String[] args) {
-        int i = minSubArrayLen(11, new int[]{1,2,3,4,5});
+        int i = minSubArrayLen2(11, new int[]{1,2,3,4,5});
         System.out.println(i);
     }
     public static int minSubArrayLen(int target, int[] nums) {
         int slow = 0;
-        double minLen = Math.pow(10, 5);
+        Integer minLen = Integer.MAX_VALUE;
         for(int fast = 0; fast < nums.length ;) {
-            if(slow > fast) {
-                break;
-            }
-            if(slow == fast && nums[fast] == target) {
-                return 1;
-            }
-
             int sumCount = 0;
             for(int j = slow ; j <= fast ; j++) {
                 sumCount+=nums[j];
@@ -53,6 +46,20 @@ public class leetcode209 {
                 fast++;
             }
         }
-        return (int)minLen == (int)Math.pow(10,5) ? 0 : (int) minLen;
+        return minLen == Integer.MAX_VALUE ? 0 : minLen;
+    }
+
+    public static int minSubArrayLen2(int target, int[] nums) {
+        int slow = 0;
+        Integer minLen = Integer.MAX_VALUE;
+        int sumCount = 0;
+        for(int fast = 0; fast < nums.length ;fast++) {
+           sumCount+=nums[fast];
+           while (sumCount >= target) {
+               minLen = Math.min(minLen,fast - slow + 1);
+               sumCount -= nums[slow++];
+           }
+        }
+        return minLen == Integer.MAX_VALUE ? 0 : minLen;
     }
 }
