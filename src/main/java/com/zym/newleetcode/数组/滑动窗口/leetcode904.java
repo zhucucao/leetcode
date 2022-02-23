@@ -135,7 +135,7 @@ public class leetcode904 {
         return maxLen;
     }
     public static void main(String[] args) {
-        int i = totalFruit2(new int[]{0,1,2,1});
+        int i = totalFruit3(new int[]{0,1,2,1});
         System.out.println(i);
     }
 }
