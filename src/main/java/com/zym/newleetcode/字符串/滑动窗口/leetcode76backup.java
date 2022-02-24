@@ -1,7 +1,6 @@
-package com.zym.newleetcode.数组.滑动窗口;
+package com.zym.newleetcode.字符串.滑动窗口;
 
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 在公司写的忘提交了 备份一个 明天到公司提交再更新一下
