@@ -1,4 +1,4 @@
-package com.zym.newleetcode.数组;
+package com.zym.newleetcode.数组.滑动窗口之快慢指针;
 
 import java.util.Arrays;
 

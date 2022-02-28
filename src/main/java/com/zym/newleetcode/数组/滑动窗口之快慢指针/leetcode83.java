@@ -1,6 +1,4 @@
-package com.zym.newleetcode.数组;
-
-import java.util.List;
+package com.zym.newleetcode.数组.滑动窗口之快慢指针;
 
 /*
 链表

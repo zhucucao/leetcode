@@ -68,7 +68,7 @@ public class leetcode76backup {
 //                    if(recordMap.get(loopArr[slow]) < compareMap.get(loopArr[slow])) {
 //                        valid--;
 //                    }
-                     // 注释部分判断的另外一种方法 因为还未移除且key的值相同，移除后肯定就不相同了。
+                     //  因为还未移除且key的值相同，移除后肯定就不相同了。
                     // record里面的符合key就减1
                     if(recordMap.get(loopArr[slow]).equals(compareMap.get(loopArr[slow]))) {
                         valid--;
