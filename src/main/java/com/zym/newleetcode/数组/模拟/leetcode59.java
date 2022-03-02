@@ -9,10 +9,6 @@ import java.util.Arrays;
 
 //
 public class leetcode59 {
-    public static void main(String[] args) {
-        int[][] ints = new leetcode59().generateMatrix(5);
-        System.out.println(Arrays.deepToString(ints));
-    }
 
     /**
      *
@@ -115,6 +111,66 @@ public class leetcode59 {
             left_down_x--;
             left_down_y++;
 
+        }
+        return arr;
+    }
+
+
+    public static void main(String[] args) {
+        int[][] ints = new leetcode59().generateMatrix2(3);
+        System.out.println(Arrays.deepToString(ints));
+    }
+
+
+    /**
+     * https://mp.weixin.qq.com/s?__biz=MzI0NjAxMDU5NA==&mid=2475922670&idx=1&sn=c07f56c74d859a7a9d934e3c36488cb9&chksm=ff22f363c8557a75f2e036cb1e0f4bce6fee53ad1ee0012f1ac689703316e88a18c7bd6d49c1&token=1145569493&lang=zh_CN#rd
+     * @param n
+     * @return
+     */
+
+    /**
+     * 此处定义了 left right  up down 来定义四个边界 上下左右
+     * 顺时针即 上->右->下->左
+     * 上->从左到右填充  右：从上往下填充
+     * 下->从右往左      左：从下往上
+     *
+     * 当上边界填充完后 up往下移 因为up代表的这一行填充完毕了
+     * 当右边界填充玩后 right往左移 因为right代表的这一列填充完毕了
+     * 当下边界填充完毕后 down往上移 因为down代表的这一行填充完毕了
+     * 当左边界填充完毕后 left往右移 因为left代表的这一列填充完毕了
+     * 开启内圈填充
+     * 以此循环
+     * 直到填充所有的数
+     */
+
+    public int[][] generateMatrix2(int n) {
+        int left = 0 ;
+        int right = n - 1;
+        int up = 0;
+        int down = n - 1;
+        int count = 0;
+
+        int[][] arr = new int[n][n];
+
+        while (count <= n * n) {
+            for(int i = left ; i <= right ; i++) {
+                arr[left][i] = ++count;
+            }
+            up++;
+            for(int j = up ; j <= down ; j++) {
+                arr[j][down] = ++count;
+            }
+            right--;
+
+            for(int k = right; k >= left; k--) {
+                arr[down][k] = ++count;
+            }
+            down--;
+
+            for(int k = down ; k >= left ; k--) {
+                arr[down][left] = ++count;
+            }
+            left++;
         }
         return arr;
     }
