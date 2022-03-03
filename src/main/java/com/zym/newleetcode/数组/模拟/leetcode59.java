@@ -144,34 +144,48 @@ public class leetcode59 {
      */
 
     public int[][] generateMatrix2(int n) {
-        int left = 0 ;
-        int right = n - 1;
-        int up = 0;
-        int down = n - 1;
-        int count = 0;
+        int left = 0 ;int right = n - 1;int up = 0;int down = n - 1;
+        int count = 1;
 
         int[][] arr = new int[n][n];
 
         while (count <= n * n) {
             for(int i = left ; i <= right ; i++) {
-                arr[left][i] = ++count;
+                arr[up][i] = count++;
             }
             up++;
             for(int j = up ; j <= down ; j++) {
-                arr[j][down] = ++count;
+                arr[j][right] = count++;
             }
             right--;
 
             for(int k = right; k >= left; k--) {
-                arr[down][k] = ++count;
+                arr[down][k] = count++;
             }
             down--;
 
-            for(int k = down ; k >= left ; k--) {
-                arr[down][left] = ++count;
+            for(int l = down ; l >= up ; l--) {
+                arr[l][left] = count++;
             }
             left++;
         }
         return arr;
+    }
+
+    public int[][] test(int n) {
+        int left = 0, right = n - 1, up = 0, down = n - 1;
+        int[][] res = new int[n][n];
+        int cnt = 1;
+        while(cnt <= n * n){
+            for(int i = left; i <= right; i++) res[up][i] = cnt++;
+            up++;
+            for(int i = up; i <= down; i++) res[i][right] = cnt++;
+            right--;
+            for(int i = right; i >= left; i--) res[down][i] = cnt++;
+            down--;
+            for(int i = down; i >= up; i--) res[i][left] = cnt++;
+            left++;
+        }
+        return res;
     }
 }
