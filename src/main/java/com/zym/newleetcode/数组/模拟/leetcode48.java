@@ -12,7 +12,27 @@ public class leetcode48 {
         new leetcode48().rotate(arr);
     }
 
+
+    // 新数组存储法 由于旋转后，第i行变成了第n-1-i列，第j列变成了第j行
+    // 得到 arr[i][j] = arr[j][n-1-i]
     public void rotate(int[][] matrix) {
+        int n = matrix.length;
+        int[][] storageMatrix = new int[n][n];
+        for(int i = 0 ; i < n ; i++) {
+            for(int j = 0 ; j < n ; j++) {
+                storageMatrix[j][n - 1 - i] = matrix[i][j];
+            }
+        }
+        for(int x = 0 ; x < n ; x++) {
+            matrix[x] = storageMatrix[x];
+        }
+    }
+
+    // 原地翻转法
+    public void rotate2(int[][] matrix) {
+        int n = matrix.length;
 
     }
+
+    // 对角线翻折 然后纵向翻折
 }
