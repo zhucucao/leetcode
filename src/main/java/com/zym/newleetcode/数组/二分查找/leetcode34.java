@@ -1,5 +1,6 @@
 package com.zym.newleetcode.数组.二分查找;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -27,8 +28,30 @@ public class leetcode34 {
      *
      * 输入：nums = [], target = 0
      * 输出：[-1,-1]
+     *
+     *  [1] 1
+     *  0,0
      */
     public int[] searchRange(int[] nums, int target) {
-        return null;
+        int minIndex = -1;
+        int maxIndex = -1;
+        for(int i = 0 ; i < nums.length ; i++) {
+            if(minIndex != -1 && nums[i] == target) {
+                maxIndex = i;
+            }else if(nums[i] == target) {
+                minIndex = i;
+            }
+        }
+        if(minIndex != -1 && maxIndex == -1) {
+            maxIndex = minIndex;
+        }
+        return new int[]{minIndex,maxIndex};
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1};
+        int target = 1;
+        int[] ints = new leetcode34().searchRange(nums,target);
+        System.out.println(Arrays.toString(ints));
     }
 }
