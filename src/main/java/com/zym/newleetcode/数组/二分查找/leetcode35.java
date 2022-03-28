@@ -15,6 +15,7 @@ public class leetcode35 {
         int i = new leetcode35().searchInsert2(nums, target);
         System.out.println(i);
     }
+    // https://leetcode-cn.com/problems/search-insert-position/solution/hua-jie-suan-fa-35-sou-suo-cha-ru-wei-zhi-by-guanp/1079722
     public int searchInsert2(int[] nums, int target) {
         int left = 0 , right = nums.length - 1;
         while(left <= right) {
