@@ -32,6 +32,7 @@ public class leetcode34 {
      *  [1] 1
      *  0,0
      */
+
     public int[] searchRange(int[] nums, int target) {
         int minIndex = -1;
         int maxIndex = -1;
@@ -49,9 +50,62 @@ public class leetcode34 {
     }
 
     public static void main(String[] args) {
-        int[] nums = {1};
-        int target = 1;
-        int[] ints = new leetcode34().searchRange(nums,target);
+        int[] nums = {5,7,7,8,8,10};
+        int target = 6;
+        int[] ints = new leetcode34().search2(nums,target);
         System.out.println(Arrays.toString(ints));
     }
+
+
+    public int[] search2(int[] nums, int target) {
+        if(nums.length == 0 || nums[0] > target || nums[nums.length-1] < target) {
+            return new int[]{-1,-1};
+        }
+        int leftIndex = findLeftIndex(nums,target);
+        int rightIndex = findRightIndex(nums,target);
+        return new int[]{leftIndex,rightIndex};
+    }
+
+    public int findLeftIndex(int[] nums, int target) {
+        int left = 0,right = nums.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if(nums[mid] > target) {
+                right = mid - 1;
+            }else if(nums[mid] < target) {
+                left = mid + 1;
+            }else if(nums[mid] == target) {
+                right = mid - 1;
+            }
+        }
+        if(nums[left] == target) {
+            return left;
+        }
+        return -1;
+    }
+
+    public int findRightIndex(int[] nums, int target) {
+        int left = 0,right = nums.length - 1;
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if(nums[mid] > target) {
+                right = mid - 1;
+            }else if(nums[mid] < target) {
+                left = mid + 1;
+            }else if(nums[mid] == target) {
+                left = mid + 1;
+            }
+        }
+        if(nums[right] == target) {
+            return right;
+        }
+        return -1;
+    }
+
+
+    /**
+     * https://mp.weixin.qq.com/s?__biz=MzI0NjAxMDU5NA==&mid=2475923225&idx=1&sn=f6a222180245d50d96483a6ffb8d5c26&chksm=ff22f094c85579822341c9bd4f7f613a283308a5c785f1feab35079e91b6b2dc99a0c3bde7c1&token=1386106609&lang=zh_CN#rd
+     */
+
+
 }
